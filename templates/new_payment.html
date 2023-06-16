@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GameX - Gaming website</title>
+
+  <!-- 
+    - favicon link
+  -->
+  <link rel="shortcut icon" href="..assets/images/favicon.svg" type="image/svg+xml">
+
+  <!-- 
+    - custom css link
+  -->
+  <link rel="stylesheet" href="../assets/css/new_payment.css">
+
+  <!-- 
+    - google font link
+  -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;500;600;700&family=Poppins:wght@400;500;700&display=swap"
+    rel="stylesheet">
+
+
+
+    <style>
+      
+      .dropdown {
+        position: relative;
+        display: inline-block;
+      
+        box-shadow: 0 0 4px hsla(0, 0%, 0%, 0.2);
+        transition: var(--transition-1);
+      
+      }
+      
+      .dropdown-content {
+        display: none;
+        position: absolute;
+        background: var(--raisin-black-1);
+        width: 100%;
+        min-width: 95px;
+        top: 6.3ch;
+        z-index: 2;
+        border-right: 5px hsl(31, 100%, 51%) solid;
+      }
+      
+      /* Links inside the dropdown */
+      .dropdown-content a {
+        color: rgb(223, 223, 223);
+        padding: 12px 10px;
+        text-decoration: none;
+        display: block;
+      }
+      
+      .dropdown-content a:hover {background: var(--raisin-black-1);
+        color: hsl(31, 100%, 51%);;
+      }
+      
+      .dropdown:hover .dropdown-content {display: block;}
+      
+      
+          </style>
+
+
+</head>
+
+<body id="top">
+
+  <!-- 
+    - #HEADER
+  -->
+
+  <header class="header">
+
+    <!-- 
+      - overlay
+    -->
+    <div class="overlay" data-overlay></div>
+
+    <div class="container">
+
+      <a href="#" class="logo">
+        <img src="../assets/images/logo.svg" alt="GameX logo">
+      </a>
+
+      <button class="nav-open-btn" data-nav-open-btn>
+        <ion-icon name="menu-outline"></ion-icon>
+      </button>
+
+      <nav class="navbar" data-nav>
+
+        <div class="navbar-top">
+
+          <a href="#" class="logo">
+            <img src="../assets/images/logo.svg" alt="GameX logo">
+          </a>
+
+          <button class="nav-close-btn" data-nav-close-btn>
+            <ion-icon name="close-outline"></ion-icon>
+          </button>
+
+        </div>
+
+        <ul class="navbar-list">
+
+          <li>
+            <a href="#hero" class="navbar-link">Home</a>
+          </li>
+
+          <li>
+            <a href="#about" class="navbar-link">About</a>
+          </li>
+
+          <li>
+            <a href="#tournament" class="navbar-link">Tournament</a>
+          </li>
+
+          <li>
+            <a href="#team" class="navbar-link">Team</a>
+          </li>
+
+          <li>
+            <a href="#gears" class="navbar-link">Gears</a>
+          </li>
+
+          <li>
+            <a href="#contact" class="navbar-link">Contact</a>
+          </li>
+
+
+        </ul>
+
+        <ul class="nav-social-list">
+
+          <li>
+            <a href="#" class="social-link">
+              <ion-icon name="logo-twitter"></ion-icon>
+            </a>
+          </li>
+
+          <li>
+            <a href="#" class="social-link">
+              <ion-icon name="logo-instagram"></ion-icon>
+            </a>
+          </li>
+
+          <li>
+            <a href="#" class="social-link">
+              <ion-icon name="logo-github"></ion-icon>
+            </a>
+          </li>
+
+          <li>
+            <a href="#" class="social-link">
+              <ion-icon name="logo-youtube"></ion-icon>
+            </a>
+          </li>
+
+        </ul>
+
+      </nav>
+
+      <div class="header-actions">
+
+        <button class="search">
+          <ion-icon name="search-outline"></ion-icon>
+        </button>
+        {{ if .isnotAuthorized }}
+        <a href="/login"><button class="btn-sign_in">
+
+          <div class="icon-box">
+            <ion-icon name="log-in-outline"></ion-icon>
+          </div>
+
+          <span>Log-in</span>
+        </button>
+      </a>
+      {{ else }}
+        <div class="dropdown">
+          <button class="btn-sign_in">
+
+            <div class="icon-box">
+              <ion-icon name="person-outline"></ion-icon>
+            </div>
+            <span>{{.username}}</span>
+            <!-- <span>{{ .isnotAdmin }} role</span> -->
+            {{if eq .role "user" }}
+            <div class="dropdown-content"> 
+              <a href="/logout">Logout</a>
+            </div>
+            {{else}}
+            <div class="dropdown-content"> 
+              <a href="/admin">Admin</a>
+              <a href="/logout">Logout</a>
+            </div>
+            {{end}}
+          </button>
+        </div>
+      {{ end }}
+  </div>
+
+    </div>
+
+  </header>
+
+
+  
